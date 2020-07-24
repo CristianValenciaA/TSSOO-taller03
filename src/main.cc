@@ -169,8 +169,8 @@ int main(int argc, char **argv)
 	std::cout << "Tiempo de LLenado secuencial: " << tiempoArrayS << "[ms]" << std::endl;
 	std::cout << "Tiempo de LLenado con threads: " << tiempoArrayP << "[ms]" << std::endl;
 	std::cout << "Tiempo de LLenado con OpenMP: " << tiempoArrayOpenMP << "[ms]" << std::endl;
-	std::cout << "SpeedUp de suma(s/p): " << (double) tiempoArrayS/tiempoArrayP << std::endl;
-	std::cout << "SpeedUp de suma(s/o): " << (double) tiempoArrayS/tiempoArrayOpenMP << std::endl;
+	std::cout << "SpeedUp de llenado(s/p): " << (double) tiempoArrayS/tiempoArrayP << std::endl;
+	std::cout << "SpeedUp de llenado(s/o): " << (double) tiempoArrayS/tiempoArrayOpenMP << std::endl;
 
 	std::cout << "================================================= " << std::endl;
 	
