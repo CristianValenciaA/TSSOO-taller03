@@ -26,14 +26,10 @@ auto vectorL = new uint64_t[totalElementos];
 	std::random_device device;
 	std::mt19937 rng(device());
 	std::uniform_int_distribution<uint32_t> nRandom(limInf, limSup);
-	start = std::chrono::system_clock::now();
 	#pragma omp parallel for  num_threads(numThreads)
 	for(size_t i = 0; i < totalElementos; ++i){	
 		vectorL[i] = nRandom(rng);
 	}
-	end = std::chrono::system_clock::now();
-	std::chrono::duration<float, std::milli> duracionLlenadoOml = end - start;
-	auto tiempoArrayOpenMP = duracionLlenadoOml.count();
 ```
 
 
@@ -42,13 +38,9 @@ auto vectorL = new uint64_t[totalElementos];
 En el siguiente módulo se realiza el siguiente proceso, el cual corresponde a la suma de los elementos guardados en el arreglo creado en el módulo 1. Como se puede ver en la siguiente sección: 
 
 ```
-uint64_t acumulador = 0;
-	start = std::chrono::high_resolution_clock::now();	
+uint64_t acumulador = 0;	
 	#pragma omp parallel for reduction(+:acumulador) num_threads(numThreads)
 	for(size_t i = 0; i < totalElementos; ++i){
 		acumulador += vectorL[i];
 	}
-	end = std::chrono::high_resolution_clock::now();
-	elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-	auto tiempoSumaOpenMP = elapsed.count();
 ```
